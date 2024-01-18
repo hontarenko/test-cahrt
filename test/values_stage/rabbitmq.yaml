@@ -1,0 +1,67 @@
+rabbitmq:
+  enabled: true
+  image:
+    registry: docker.io
+    repository: bitnami/rabbitmq
+    tag: 3.11.16-debian-11-r0
+    pullPolicy: IfNotPresent
+  nameOverride: "rabbitmq"
+  fullnameOverride: "rabbitmq"
+  auth:
+    username: admin
+    password: "1qwerty1"
+    erlangCookie: "pp7PLJYGMA7h732Kdne"
+  loadDefinition:
+    enabled: true
+    file: "/app/load_definition.json"
+    existingSecret: load-definition
+  extraConfiguration: |
+    load_definitions = /app/load_definition.json
+  extraSecrets:
+    load-definition:
+      load_definition.json: |
+        {
+          "users": [
+            {
+              "name": "{{ .Values.auth.username }}",
+              "password": "{{ .Values.auth.password }}",
+              "tags": "administrator"
+            }
+          ],
+          "vhosts": [
+            {
+              "name": "/"
+            }
+          ],
+          "permissions": [
+            {
+              "user": "{{ .Values.auth.username }}",
+              "vhost": "/",
+              "configure": ".*",
+              "write": ".*",
+              "read": ".*"
+            }
+          ],
+          "policies":[
+            {
+              "vhost": "/",
+              "name":"ha",
+              "pattern":".*",
+              "definition":{"ha-mode":"all","ha-sync-mode":"automatic","ha-sync-batch-size":5}
+            }
+          ]
+        }
+  replicaCount: 3
+  clustering:
+    forceBoot: true
+  pdb:
+    create: false
+    minAvailable: 1
+  persistence:
+    enabled: true
+    size: 2Gi
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      path: "/metrics/per-object"
