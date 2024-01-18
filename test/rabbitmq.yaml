@@ -8,8 +8,8 @@ rabbitmq:
     nameOverride: rabbitmq
     fullnameOverride: rabbitmq
     auth:
-        username: ENC[AES256_GCM,data:r2xQ4kc=,iv:+97aRD/gOcgbCQwh5GQ6/Fug5qcUNneNH82rsSPoMrM=,tag:+z2s5MStpYPBgrSTgbjTvQ==,type:str]
-        password: ENC[AES256_GCM,data:M/A1y3WcEBo=,iv:Y9t62Y9WHQtZkHA86Cs8/t9BVBUsImzn+JX1cqcZnNA=,tag:ZBKa2ZNgDTwZfMz9si2i6Q==,type:str]
+        username: ENC[AES256_GCM,data:cmSBsWs=,iv:duLdXV/0ipCa87p0tfZgNkG7RFViY7VagmM3o0QfYlY=,tag:aIw7fPymj1x1tnE6ENmorg==,type:str]
+        password: ENC[AES256_GCM,data:uthiAtfJ7V0MjPvA4lo=,iv:N95wPLaOpelmc4C2gH2YXEl26wL9mVa1fSRJtx33r7E=,tag:JluPXck5LfZkw1+mXlNpVg==,type:str]
         erlangCookie: pp7PLJYGMA7h732Kdne
     loadDefinition:
         enabled: true
@@ -68,15 +68,15 @@ rabbitmq:
 sops:
     kms:
         - arn: arn:aws:kms:eu-west-1:968199160813:key/36954c37-c94a-4d58-b09c-657df7822c99
-          created_at: "2024-01-18T20:05:52Z"
-          enc: AQICAHhWcDMr8oH+BqA/jX/be/kNo+OjSJkYiwegqivVVeYjpgGuW0aS39VTZiOL+Mugh4LTAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMHwpqhbLBCoiGWYHKAgEQgDv8s/Q1VI78mbO9J3dFhHanaAhit/JX0kxnZNAe0JGtJixwU5kpO8rlTDP8psd5GKDj0Ruc+PvY8GgjeQ==
+          created_at: "2024-01-18T20:13:29Z"
+          enc: AQICAHhWcDMr8oH+BqA/jX/be/kNo+OjSJkYiwegqivVVeYjpgHTOyNghs9HlRgDaL0YgK7IAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMfk31C6LVrcKuyyS3AgEQgDsGypX+KyY2Lw+MVDnrSoI6Qlezh/6OSSIN8/M3ZE+fmuWKLpyEpjLhaQeSincPrXdZ/+GeUmhusHuVIw==
           aws_profile: ""
     gcp_kms: []
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-01-18T20:05:53Z"
-    mac: ENC[AES256_GCM,data:8cpLhWrPNKAYlb3s7+eqwwijG+l9DDvvGTCdoU8URRMGeSm9Hj60Eac/5UEZo2kbaWFJsjPsTZQc/P+DSmddYFwh5+oP1JZkx4pcqZcfgE8I2V3phA0B+4sxy3zT+h2rJkXzwzEcR/H6kYNFl36zGcHhhLduQCwXHoMzcyHy884=,iv:PobZhiJWCcws8cUVzIcCSYgjgcCJJXO/Thk2k7VXjFs=,tag:JxSArk2MxhjfSeHM0frmnw==,type:str]
+    lastmodified: "2024-01-18T20:13:29Z"
+    mac: ENC[AES256_GCM,data:k4ClIAeinr3dLFGoC1M2pL+xiV+eEQSsUll2cYNqcPUUrmlRzYjeh1YROf2XX9fhcelG30QvkXsGn9FrX7tYTxhl5w5e+kujdpwkXhikewAUrGKrPQDZ3jWxtDO6/WLdzTMcyf9OpOURRyIbm7A5a6yFX0BekGaXiNk0gTJjkRk=,iv:Jy0KpUGYCmCnQ98QGahFNwd++HotKb5uHTiYP2Hi2Ns=,tag:Umi+70C3OeI/F4xu/eQAiQ==,type:str]
     pgp: []
     encrypted_regex: ^(username|password)$
     version: 3.8.1
