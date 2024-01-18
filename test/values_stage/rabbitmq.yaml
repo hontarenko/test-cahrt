@@ -1,67 +1,82 @@
 rabbitmq:
-  enabled: true
-  image:
-    registry: docker.io
-    repository: bitnami/rabbitmq
-    tag: 3.11.16-debian-11-r0
-    pullPolicy: IfNotPresent
-  nameOverride: "rabbitmq"
-  fullnameOverride: "rabbitmq"
-  auth:
-    username: admin
-    password: "1qwerty1"
-    erlangCookie: "pp7PLJYGMA7h732Kdne"
-  loadDefinition:
     enabled: true
-    file: "/app/load_definition.json"
-    existingSecret: load-definition
-  extraConfiguration: |
-    load_definitions = /app/load_definition.json
-  extraSecrets:
-    load-definition:
-      load_definition.json: |
-        {
-          "users": [
-            {
-              "name": "{{ .Values.auth.username }}",
-              "password": "{{ .Values.auth.password }}",
-              "tags": "administrator"
-            }
-          ],
-          "vhosts": [
-            {
-              "name": "/"
-            }
-          ],
-          "permissions": [
-            {
-              "user": "{{ .Values.auth.username }}",
-              "vhost": "/",
-              "configure": ".*",
-              "write": ".*",
-              "read": ".*"
-            }
-          ],
-          "policies":[
-            {
-              "vhost": "/",
-              "name":"ha",
-              "pattern":".*",
-              "definition":{"ha-mode":"all","ha-sync-mode":"automatic","ha-sync-batch-size":5}
-            }
-          ]
-        }
-  replicaCount: 3
-  clustering:
-    forceBoot: true
-  pdb:
-    create: false
-    minAvailable: 1
-  persistence:
-    enabled: true
-    size: 2Gi
-  metrics:
-    enabled: true
-    serviceMonitor:
-      enabled: true
-      path: "/metrics/per-object"
+    image:
+        registry: docker.io
+        repository: bitnami/rabbitmq
+        tag: 3.11.16-debian-11-r0
+        pullPolicy: IfNotPresent
+    nameOverride: rabbitmq
+    fullnameOverride: rabbitmq
+    auth:
+        username: ENC[AES256_GCM,data:TR4REXA=,iv:udS3NyfBE2f6XoQSKBM36TGe0UqETd1F355VGWNUHSA=,tag:L0QE0gXT9C+b2rQRB5CNEA==,type:str]
+        password: ENC[AES256_GCM,data:IcWKcur90eQ=,iv:KVPZfultAXL+ccWFmyTsL9ZNcDHGKuSv8BWx6WDoYR8=,tag:xVpGVYaA8QFFB6I6NGFJwQ==,type:str]
+        erlangCookie: pp7PLJYGMA7h732Kdne
+    loadDefinition:
+        enabled: true
+        file: /app/load_definition.json
+        existingSecret: load-definition
+    extraConfiguration: |
+        load_definitions = /app/load_definition.json
+    extraSecrets:
+        load-definition:
+            load_definition.json: |
+                {
+                  "users": [
+                    {
+                      "name": "{{ .Values.auth.username }}",
+                      "password": "{{ .Values.auth.password }}",
+                      "tags": "administrator"
+                    }
+                  ],
+                  "vhosts": [
+                    {
+                      "name": "/"
+                    }
+                  ],
+                  "permissions": [
+                    {
+                      "user": "{{ .Values.auth.username }}",
+                      "vhost": "/",
+                      "configure": ".*",
+                      "write": ".*",
+                      "read": ".*"
+                    }
+                  ],
+                  "policies":[
+                    {
+                      "vhost": "/",
+                      "name":"ha",
+                      "pattern":".*",
+                      "definition":{"ha-mode":"all","ha-sync-mode":"automatic","ha-sync-batch-size":5}
+                    }
+                  ]
+                }
+    replicaCount: 3
+    clustering:
+        forceBoot: true
+    pdb:
+        create: false
+        minAvailable: 1
+    persistence:
+        enabled: true
+        size: 2Gi
+    metrics:
+        enabled: true
+        serviceMonitor:
+            enabled: true
+            path: /metrics/per-object
+sops:
+    kms:
+        - arn: arn:aws:kms:eu-west-1:968199160813:key/36954c37-c94a-4d58-b09c-657df7822c99
+          created_at: "2024-01-18T14:51:14Z"
+          enc: AQICAHhWcDMr8oH+BqA/jX/be/kNo+OjSJkYiwegqivVVeYjpgHt+8f/B1cUfYZX9tCVzi/HAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMjY9tx7xbvyYDQRt0AgEQgDtFLfAc2uRA2USH3/GA71VEQJKkB5iLKM6hVAd1hdl5IkDImP6Ef/26/Hebjmt2SANepYm+beVD2IQVbg==
+          aws_profile: amo
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-01-18T14:51:14Z"
+    mac: ENC[AES256_GCM,data:4XmIN4LWvOlaG+nJaaR/HzHZ6niqDzQ7S6kcStNRkh748aXHb2udeWzbnMM2doaYZvi9Si+OW1XDzOmb7bnievzO8O4g/jhuW0APJYlCHqaVP0BfTcwv0R+3D5cf2wB5DcSsmC/nYaIPr6siRYN+bFVBoU8oq3URWqt/gr5aFO4=,iv:M8bTP1aYp6HPXvcWMAUAQr36m/LmPeeDPbUgi2h6/6o=,tag:wJoky5JerSz9NglzYGAUSA==,type:str]
+    pgp: []
+    encrypted_regex: ^(username|password)$
+    version: 3.8.1
