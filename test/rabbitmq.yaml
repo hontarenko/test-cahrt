@@ -61,9 +61,9 @@ rabbitmq:
         enabled: true
         size: 2Gi
     metrics:
-        enabled: true
+        enabled: false
         serviceMonitor:
-            enabled: true
+            enabled: false
             path: /metrics/per-object
 sops:
     kms:
