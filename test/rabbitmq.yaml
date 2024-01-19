@@ -8,8 +8,8 @@ rabbitmq:
     nameOverride: rabbitmq
     fullnameOverride: rabbitmq
     auth:
-        username: ENC[AES256_GCM,data:DKC2bN8=,iv:xrysk9ggzitseEpE7IoUVWOS2JAvFky4kHhyWs+F90A=,tag:o1GuSIynIChqBJ8V0v+RDQ==,type:str]
-        password: ENC[AES256_GCM,data:PKyxAVPXPv3UcmKi7Dg=,iv:kuygIF/Yqs9gS41DtHlHMpsWurdnt8ETIILB7/vFGRA=,tag:bAC89DO/lVdIH2ESMwxV2A==,type:str]
+        username: dsfdsfdsf
+        password: dsfdsfdsf
         erlangCookie: pp7PLJYGMA7h732Kdne
     loadDefinition:
         enabled: true
@@ -60,18 +60,3 @@ rabbitmq:
     persistence:
         enabled: true
         size: 2Gi
-sops:
-    kms:
-        - arn: arn:aws:kms:eu-west-1:968199160813:key/36954c37-c94a-4d58-b09c-657df7822c99
-          created_at: "2024-01-18T20:14:30Z"
-          enc: AQICAHhWcDMr8oH+BqA/jX/be/kNo+OjSJkYiwegqivVVeYjpgGYJCkOjWlsLgXsnvB9XDONAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMM52UPDfMjvzLWUiaAgEQgDuthCVlsbQgx67N/LU7roIlGwDN397uOEKzYYfKdEqPOlvn4l3KaMlFZJQ4P/cHIuQC14uEmNGF3W1Mwg==
-          aws_profile: ""
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
-    age: []
-    lastmodified: "2024-01-18T20:14:31Z"
-    mac: ENC[AES256_GCM,data:19iaLmwItzL5cyd5ABAY1NOd8AMsskOaN78Y7mQIowBblyPceGeRyV0nl86gHb/hYjW7h4eGx0kaf5c2Auq5LSPa6QIOpvfIClx9lwrmPk5sis751fGKWHCcmnrs7pwO3Nh329vVs8t6uBV+OokoEC0HfBXnzLYC4hCNSt3dw+k=,iv:k/Q/YsmdG5umCfWQwq8eX9T20V1gnpf9HFM1dUuz37Q=,tag:d9FYN0H3oTLIrL7fCd2HJw==,type:str]
-    pgp: []
-    encrypted_regex: ^(username|password)$
-    version: 3.8.1
